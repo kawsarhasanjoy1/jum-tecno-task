@@ -45,7 +45,6 @@ const updateMood = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, 
 const softDeleteMood = (0, catchAsync_1.catchAsync)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const { id } = req.params;
-    console.log(id);
     const result = yield services_1.modeServices.softDeleteMood((_a = req.user) === null || _a === void 0 ? void 0 : _a.userId, id);
     (0, sendResponse_1.sendResponse)(res, {
         statusCode: 200,
