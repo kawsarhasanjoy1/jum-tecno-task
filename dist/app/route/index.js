@@ -5,6 +5,7 @@ const express_1 = require("express");
 const route_1 = require("../modules/users/route");
 const route_2 = require("../modules/auth/route");
 const router_1 = require("../modules/mode/router");
+const router_2 = require("../modules/moodCount/router");
 exports.router = (0, express_1.Router)();
 const routerPath = [
     {
@@ -18,6 +19,10 @@ const routerPath = [
     {
         path: "/moods",
         element: router_1.moodRouter,
+    },
+    {
+        path: "/summary",
+        element: router_2.summaryRouter,
     },
 ];
 routerPath.map((route) => exports.router.use(route.path, route.element));
