@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.moodRouter = void 0;
+const express_1 = require("express");
+const controller_1 = require("./controller");
+const auth_1 = require("../../middleware/auth");
+const user_constance_1 = require("../users/user.constance");
+const router = (0, express_1.Router)();
+router.post("/create-mood", (0, auth_1.auth)(user_constance_1.USER_ROLE.admin, user_constance_1.USER_ROLE.user), controller_1.moodController.createMood);
+router.get("/", (0, auth_1.auth)(user_constance_1.USER_ROLE.admin, user_constance_1.USER_ROLE.user), controller_1.moodController.getMoods);
+router.put("/moods/:id", (0, auth_1.auth)(user_constance_1.USER_ROLE.admin, user_constance_1.USER_ROLE.user), controller_1.moodController.updateMood);
+router.delete("/moods/:id", (0, auth_1.auth)(user_constance_1.USER_ROLE.admin, user_constance_1.USER_ROLE.user), controller_1.moodController.softDeleteMood);
+router.patch("/moods/:id/restore", controller_1.moodController.restoreMood);
+// router.get('/summary/week', auth(USER_ROLE.admin,USER_ROLE.user), moodController.getWeeklySummary);
+exports.moodRouter = router;
