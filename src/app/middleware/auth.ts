@@ -15,7 +15,6 @@ export const auth = (...requiredRole: TRole[]) => {
     }
     const decode = verifyToken(token);
     const { phone, userId, role, aud, exp } = decode as JwtPayload;
-    console.log(phone,userId)
     const users = await User.findOne({ phone: phone, _id: userId });
     if (!users) {
       throw new AppError(StatusCodes.NOT_FOUND, "this user is not found");
